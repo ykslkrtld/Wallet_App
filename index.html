@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Wallet App</title>
+  </head>
+  <body>
+    <header class="mt-5">
+      <h1 class="text-center fs-1 text-warning">
+        My Wallet App <i class="fa-solid fa-wallet text-black"></i>
+      </h1>
+    </header>
+    <main class="mx-5">
+      <div class="harcamaFormu border border-2 rounded-4">
+        <h2 class="text-center mt-3">Harcama Formu</h2>
+        <form class="row m-2">
+          <div class="col-md-6">
+            <label for="date" class="form-label">Tarih</label>
+            <input type="date" class="form-control" id="date" />
+          </div>
+          <div class="col-md-6">
+            <label for="harMik" class="form-label">Harcama Miktarı</label>
+            <input
+              type="number"
+              class="form-control"
+              id="harMik"
+              placeholder="1000 ₺"
+            />
+          </div>
+          <div class="col-12">
+            <label for="harAlan" class="form-label mt-3">Harcama Alanı</label>
+            <input
+              type="text"
+              class="form-control"
+              id="harAlan"
+              placeholder="Kira, Fatura, Kredi Kartı"
+            />
+          </div>
+          <div class="col-12 text-center mt-2">
+            <button type="submit" class="btn btn-danger kaydet">Kaydet</button>
+          </div>
+        </form>
+      </div>
+      <div class="gelir col-12 row mt-3">
+        <div class="col-md-10">
+          <input
+            type="number"
+            class="form-control"
+            id="gelir"
+            placeholder="Gelirinizi giriniz."
+          />
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-success w-100" id="ekle">
+            Ekle
+          </button>
+        </div>
+      </div>
+      <div class="col m-3">
+        <table class="giderTablo table table-striped table-bordered text-center">
+          <thead>
+            <tr>
+              <th>Tarih</th>
+              <th>Harcama Alanı</th>
+              <th>Tutar(₺)</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody class="tBody"></tbody>
+        </table>
+      </div>
+      <div class="col-6 ms-auto mt-4">
+        <table class="sonucTablo table table-striped table-bordered text-end">
+          <tbody>
+            <tr>
+              <th>Geliriniz(₺):</th>
+              <td class="gelirSonuc">0</td>
+            </tr>
+            <tr>
+              <th>Gideriniz(₺):</th>
+              <td class="giderSonuc">0</td>
+            </tr>
+            <tr>
+              <th>Kalan(₺):</th>
+              <td class="kalanSonuc">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <button type="button" class="btn btn-secondary bilTemizle">
+          Bilgileri Temizle
+        </button>
+      </div>
+    </main>
+
+    <script src="wallet.js"></script>
+  </body>
+</html>
