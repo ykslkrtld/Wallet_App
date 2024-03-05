@@ -10,6 +10,15 @@ const kalan = document.querySelector(".kalanSonuc");
 const bilgileriTemizle = document.querySelector(".bilTemizle");
 const tabloBody = document.querySelector(".tBody");
 
+let harcamaListesi = []
+
+window.addEventListener("load", ()=>{
+    gideriniz.textContent = Number(localStorage.getItem("gideriniz")) || 0
+    geliriniz.textContent = Number(localStorage.getItem("geliriniz")) || 0
+    kalan.textContent = Number(localStorage.getItem("kalan")) || 0
+    tarih.valueAsDate = new Date()
+    kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
+})
 const harcamaFormu = () => {
     
     if (!tarih.value || !harcamaMiktari.value || !harcamaAlani.value) {
@@ -50,7 +59,7 @@ const harcamaFormu = () => {
 kaydet.addEventListener("click", (e) => {
     e.preventDefault();
     harcamaFormu();
-    tarih.value = "";
+    tarih.valueAsDate = new Date()
     harcamaMiktari.value = "";
     harcamaAlani.value = "";
 });
@@ -59,11 +68,14 @@ kaydet.addEventListener("click", (e) => {
 const toplamGider = () => {
     const topGider = document.querySelectorAll(".giderTablo td:nth-child(3)");
     gideriniz.textContent = [...topGider].reduce((acc, val) => acc + Number(val.textContent), 0);
+    localStorage.setItem("gideriniz", gideriniz.textContent)
 }
 
 
 const toplamGelir = () => {
     geliriniz.textContent = Number(geliriniz.textContent) + Number(gelirInput.value)
+    localStorage.setItem("geliriniz", geliriniz.textContent)
+
 }
 
 
@@ -77,14 +89,18 @@ ekleBtn.addEventListener("click", () => {
 const kalanSonuc = () => {
     kalan.textContent = Number(geliriniz.textContent) - Number(gideriniz.textContent)
     kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
+    localStorage.setItem("kalan", kalan.textContent)
+
 }
 
 bilgileriTemizle.addEventListener("click", () => {
     kalan.textContent = "0"
     geliriniz.textContent = "0"
     gideriniz.textContent = "0"
-    document.querySelector(".tBody").remove()
+    tabloBody.textContent = ""
+    localStorage.clear()
     kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
+    tarih.valueAsDate = new Date()
 })
 
 
