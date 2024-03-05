@@ -15,7 +15,6 @@ let harcamaListesi = []
 window.addEventListener("load", ()=>{
     gideriniz.textContent = Number(localStorage.getItem("gideriniz")) || 0
     geliriniz.textContent = Number(localStorage.getItem("geliriniz")) || 0
-    kalan.textContent = Number(localStorage.getItem("kalan")) || 0
     tarih.valueAsDate = new Date()
     kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
 })
@@ -75,7 +74,6 @@ const toplamGider = () => {
 const toplamGelir = () => {
     geliriniz.textContent = Number(geliriniz.textContent) + Number(gelirInput.value)
     localStorage.setItem("geliriniz", geliriniz.textContent)
-
 }
 
 
@@ -89,8 +87,6 @@ ekleBtn.addEventListener("click", () => {
 const kalanSonuc = () => {
     kalan.textContent = Number(geliriniz.textContent) - Number(gideriniz.textContent)
     kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
-    localStorage.setItem("kalan", kalan.textContent)
-
 }
 
 bilgileriTemizle.addEventListener("click", () => {
@@ -98,7 +94,8 @@ bilgileriTemizle.addEventListener("click", () => {
     geliriniz.textContent = "0"
     gideriniz.textContent = "0"
     tabloBody.textContent = ""
-    localStorage.clear()
+    localStorage.removeItem("geliriniz")
+    localStorage.removeItem("gideriniz")
     kalan.textContent < 0 ? kalan.style.color = "red" : kalan.textContent > 0 ? kalan.style.color = "green" : kalan.style.color = "black"
     tarih.valueAsDate = new Date()
 })
